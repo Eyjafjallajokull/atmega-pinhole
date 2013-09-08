@@ -79,15 +79,15 @@ Microcontroller is now ready to be programmed. Disconnect programmer, add serial
 
 ## Notes:
 
-### Software versions i'm using
+### Tools i'm using
 
 * Ubuntu 12
 * avrdude 5.11.1
 * Arduino ide 1.0.4
+* Fritzing 0.8.3
 
 ### Sources
 
 * atmega on breadboard
   * http://www.jameco.com/Jameco/workshop/JamecoBuilds/arduinocircuit.html
-  * 
 * stepper 
