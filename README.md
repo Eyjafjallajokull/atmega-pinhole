@@ -1,10 +1,10 @@
-# UNDER HEAVY DEVELOPMENT
+## UNDER HEAVY DEVELOPMENT
 
 # Pinhole camera
 
 ## TLDR
 
-DIY pinhole camera with mechanical shutter and film winder, controlled wirelessly by android application.
+DIY pinhole camera with mechanical shutter and film winder.
 
 [some photos]
 
