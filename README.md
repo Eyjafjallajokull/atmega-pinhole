@@ -1,10 +1,8 @@
-# UNDER HEAVY DEVELOPMENT
-
 # Pinhole camera
 
-## TLDR
+This is work in progress.
 
-DIY pinhole camera with mechanical shutter and film winder, controlled wirelessly by android application.
+TLDR; DIY pinhole camera with mechanical shutter and film winder.
 
 [some photos]
 
@@ -20,11 +18,11 @@ Everything I've done here I did for the first time, thus I might be wrong and es
 ## Features
 
 * shutter will be opened and closed by tiny servo motor
-* one way winding with stepper motor
+* one way film winding using stepper motor
 * temt6000 light sensor
 * whole thing is controlled by atmega chip
-* pinhole itself must be easy to replace
-* adapters for full frame picture or for cinema view
+* replaceable pinhole
+
 
 ## Base electronic circuit
 
@@ -69,24 +67,22 @@ Next open progremmers.txt, and change options to:
 
 Now start Arduino ide from terminal to see logs. In Tools menu select "Parallel programmer", select board "Arduino NG or older /w Atmega168" and finally "Burn bootloader". Wait few minutes. 
 
-Microcontroller is now ready to be programmed. Disconnect programmer, add serial to usb adapter, and led diode to pin 13. In Arduino Ide load blink example (File>Examples>Basics>Blink). Press reset button on breadboard, and then (within few seconds) press upload button in ide.
-
-
+Microcontroller is now ready to be programmed. Disconnect programmer, add serial to usb adapter, and led diode to pin 13. In Arduino Ide load blink example (File>Examples>Basics>Blink). Press reset button on breadboard, and then (within few seconds) press upload button in ide. If led blinks - your controller is ready.
 
 ### Arduino
 
-### Android
+
 
 ## Notes:
 
-### Tools i'm using
+Tools I'm using:
 
 * Ubuntu 12
 * avrdude 5.11.1
 * Arduino ide 1.0.4
 * Fritzing 0.8.3
 
-### Sources
+Sources:
 
 * atmega on breadboard
   * http://www.jameco.com/Jameco/workshop/JamecoBuilds/arduinocircuit.html
