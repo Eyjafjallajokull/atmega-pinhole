@@ -9,12 +9,6 @@ TLDR; DIY pinhole camera with mechanical shutter and film winder.
 I have to say that I'm not a pro in any of these fields: electronics, arduino, c programming or pinhole design.
 Everything I've done here I did for the first time, thus I might be wrong and especially there might be better and more efficient ways of achiving same thing. In this document I will try to describe process of creating camera. Part list and software versions can be found at the end of page.
 
-## Features
-
-* mechanical shutter (tiny servo motor)
-* one way film winding (stepper motor)
-* light sensor (temt6000)
-
 ## Electronics
 
 I started from the purchase of basic components: atmega, power regulator, breadboard and connectors. Steps in this chapter:
@@ -27,7 +21,7 @@ I started from the purchase of basic components: atmega, power regulator, breadb
 
 ### Setting up Atmega
 
-![](https://raw.github.com/Eyjafjallajokull/atmega-pinhole/master/docs/breadboard.png)
+![](https://raw.github.com/Eyjafjallajokull/atmega-pinhole/master/docs/breadboard.jpg)
 
 First setup power input on breadboard. Then add atmega chip, reset button and clock. This is very well described on this page http://www.arduino.cc/en/Main/Standalone
 
@@ -81,14 +75,14 @@ Altough Arduino programming language supports creating classes and objects, I wo
 
 ### Camera circuit and code
 
-![](https://raw.github.com/Eyjafjallajokull/atmega-pinhole/master/docs/pcb.png)
-![](https://raw.github.com/Eyjafjallajokull/atmega-pinhole/master/docs/source.png)
+![](https://raw.github.com/Eyjafjallajokull/atmega-pinhole/master/docs/pcb.jpg)
+![](https://raw.github.com/Eyjafjallajokull/atmega-pinhole/master/docs/source.jpg)
 
-After a lot of trial and error I designed whole circuit which is available in [fritzing](https://github.com/Eyjafjallajokull/atmega-pinhole/blob/master/design/pcb-design.fzz) or [png](https://raw.github.com/Eyjafjallajokull/atmega-pinhole/blob/master/design/pcb-design-generated/pcb-design-schematic.png) format. PCB designs are also available.
+After a lot of trial and error I designed whole circuit which is available in [fritzing](https://github.com/Eyjafjallajokull/atmega-pinhole/blob/master/design/pcb-design.fzz) or [png](https://raw.github.com/Eyjafjallajokull/atmega-pinhole/blob/master/design/pcb-design-generated/pcb-design-schematic.png) format. PCB designs are also available in repository.
 
 ## Pinhole and casing
 
-![](https://raw.github.com/Eyjafjallajokull/atmega-pinhole/master/docs/casing.png)
+![](https://raw.github.com/Eyjafjallajokull/atmega-pinhole/master/docs/casing.jpg)
 
 ## Notes:
 
