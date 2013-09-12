@@ -27,10 +27,11 @@ First setup power input on breadboard. Then add atmega chip, reset button and cl
 
 Next step is to burn arduino bootloader on atmega controller. The best way to do this is by using AVR programmer like AVRISP mkII or USBtinyISP. Its also possible to do this using arduino board (many tutorials available). I didn't have any of those, but I found that it's possible to do this via parallel port.
 
-Building parellel port ISP programmer is super easy, just take a look on schematic:
+Building parellel port ISP programmer is super easy, just take a look at schematic:
 
 ![](https://raw.github.com/Eyjafjallajokull/atmega-pinhole/master/docs/bsd-programmer.png)
-*[source](http://avrprogrammers.com/programmers/Parallel_Port/avr-programmer-bsd) *
+
+*[source](http://avrprogrammers.com/programmers/Parallel_Port/avr-programmer-bsd)*
 
 To poperly connect atmega to ISP programmer you will need to know controller [pinout](http://arduino.cc/en/Hacking/PinMapping).
 
@@ -69,14 +70,13 @@ Having Atmega + Arduino IDE setup I experimented separately with basic component
 
 // @todo add some code snippets here
 
-Altough Arduino programming language supports creating classes and objects, I won't take advantage of it, bacause using those structures implies larger codebase. I came across handy library called FiniteStateMachine - name describes everything.
+Altough Arduino programming language supports creating classes and objects, I won't take advantage of it, because using those structures implies larger codebase. I came across handy library called FiniteStateMachine - name describes everything.
 
 // @todo example usage, source
 
 ### Camera circuit and code
 
-![](https://raw.github.com/Eyjafjallajokull/atmega-pinhole/master/docs/pcb.jpg)
-![](https://raw.github.com/Eyjafjallajokull/atmega-pinhole/master/docs/source.jpg)
+![](https://raw.github.com/Eyjafjallajokull/atmega-pinhole/master/docs/pcb.jpg)![](https://raw.github.com/Eyjafjallajokull/atmega-pinhole/master/docs/source.jpg)
 
 After a lot of trial and error I designed whole circuit which is available in [fritzing](https://github.com/Eyjafjallajokull/atmega-pinhole/blob/master/design/pcb-design.fzz) or [png](https://raw.github.com/Eyjafjallajokull/atmega-pinhole/blob/master/design/pcb-design-generated/pcb-design-schematic.png) format. PCB designs are also available in repository.
 
