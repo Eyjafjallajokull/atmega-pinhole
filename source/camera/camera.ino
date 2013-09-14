@@ -9,10 +9,10 @@
 
 int lightMeterPin = A0;
 int statusLedPin = 13;
-int frameSizeLedPin = 12;
+//int frameSizeLedPin = 12; // not used for now
 
 int resetFrameCountSwitchPin = 9;
-int frameSizeSwitchPin = 10; // nie uzywane
+//int frameSizeSwitchPin = 10; // not used for now
 //Bounce frameSizeSwitch = Bounce(frameSizeSwitchPin, frameSizeSwitchPin); 
 int shutterSwitchPin = 11; 
 //Bounce shutterSwitch = Bounce(shutterSwitchPin, shutterSwitchPin); 
@@ -153,14 +153,14 @@ void setup() {
   initializeCameraConfig();
   spawnSerialKiller();
   pinMode(statusLedPin, OUTPUT);
-  pinMode(frameSizeLedPin, OUTPUT);
+  //pinMode(frameSizeLedPin, OUTPUT);
   pinMode(shutterServoPin, OUTPUT);
-  pinMode(frameSizeSwitchPin, INPUT);
+  //pinMode(frameSizeSwitchPin, INPUT);
   pinMode(shutterSwitchPin, INPUT);
   pinMode(resetFrameCountSwitchPin, INPUT);
   winderStepper.setSpeed(winderStepperSpeed);
   shutterServo.attach(shutterServoPin);
-  shutterServo.write(0);
+  //shutterServo.write(0);
 }
  
 
@@ -193,10 +193,10 @@ void blinkerFinish() {
 
 
 void CSStartUpdate() {
-  if (digitalRead(frameSizeSwitchPin) == HIGH) {
-    digitalWrite(frameSizeLedPin, HIGH);
-    smallFrameSize = true;
-  }
+//  if (digitalRead(frameSizeSwitchPin) == HIGH) {
+//    digitalWrite(frameSizeLedPin, HIGH);
+//    smallFrameSize = true;
+//  }
   serialKiller.sendCmd(kSKMsgAck, "ready");
   digitalWrite(statusLedPin, HIGH); delay(100);
   digitalWrite(statusLedPin, LOW); delay(100);
