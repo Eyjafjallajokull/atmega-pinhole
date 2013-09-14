@@ -1,0 +1,3 @@
+[submodule "source/libraries/CmdMessenger"]
+	path = source/libraries/CmdMessenger
+	url = git@github.com:dreamcat4/CmdMessenger.git
