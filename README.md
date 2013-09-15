@@ -28,10 +28,11 @@ First setup power input on breadboard. Then add atmega chip, reset button and cl
 
 Next step is to burn arduino bootloader on atmega controller. The best way to do this is by using AVR programmer like AVRISP mkII or USBtinyISP. Its also possible to do this using arduino board (many tutorials available). I didn't have any of those, but I found that it's possible to do this via parallel port.
 
-Building parellel port ISP programmer is super easy, just take a look on schematic:
+Building parellel port ISP programmer is super easy, just take a look at schematic:
 
 ![](https://raw.github.com/Eyjafjallajokull/atmega-pinhole/master/docs/bsd-programmer.png)
-*[source](http://avrprogrammers.com/programmers/Parallel_Port/avr-programmer-bsd) *
+
+*[source](http://avrprogrammers.com/programmers/Parallel_Port/avr-programmer-bsd)*
 
 To poperly connect atmega to ISP programmer you will need to know controller [pinout](http://arduino.cc/en/Hacking/PinMapping).
 
