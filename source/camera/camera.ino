@@ -160,7 +160,7 @@ void setup() {
   pinMode(resetFrameCountSwitchPin, INPUT);
   winderStepper.setSpeed(winderStepperSpeed);
   shutterServo.attach(shutterServoPin);
-  //shutterServo.write(0);
+  shutterServo.write(0);
 }
  
 
