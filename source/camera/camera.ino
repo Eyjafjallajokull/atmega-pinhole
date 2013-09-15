@@ -18,8 +18,8 @@ int shutterSwitchPin = 11;
 //Bounce shutterSwitch = Bounce(shutterSwitchPin, shutterSwitchPin); 
 
 int shutterServoPin = 3;
-int shutterServoOpenPosition = 0;
-int shutterServoClosePosition = 20;
+int shutterServoOpenPosition = 20;
+int shutterServoClosePosition = 0;
 Servo shutterServo;
 int winderStepperSpeed = 150;
 Stepper winderStepper(64, 5, 6, 7, 8);
