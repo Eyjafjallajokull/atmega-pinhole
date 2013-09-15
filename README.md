@@ -1,6 +1,6 @@
 This is work in progress.
 
-# Pinhole camera
+# Pinhole camera on steroids
 
 TLDR; DIY pinhole camera with mechanical shutter and film winder.
 
@@ -79,7 +79,7 @@ Next open progremmers.txt, and change options to:
 	parallel.protocol=bsd
 	parallel.delay=200
 
-Now start Arduino ide from terminal to see logs. In Tools menu select "Parallel programmer", select board "Arduino NG or older /w Atmega168" and finally "Burn bootloader". Wait few minutes. 
+In Tools menu select "Parallel programmer", select board "Arduino NG or older /w Atmega168" and finally "Burn bootloader". Wait few minutes. 
 
 Microcontroller is now ready to be programmed. Disconnect ISP programmer, connect serial to usb adapter (RX, TX, power), and led diode to pin 13. In Arduino Ide load blink example (File>Examples>Basics>Blink). Press reset button on breadboard, and then (within few seconds) press upload button in ide. If led blinks - your controller is ready.
 
@@ -126,6 +126,10 @@ After a lot of trial and error I designed whole circuit which is available in [f
 ## Pinhole and casing
 
 ![](https://raw.github.com/Eyjafjallajokull/atmega-pinhole/master/docs/casing.jpg)
+
+I decided to use cardboard for casing, bacause it's cheap and easy work with. I've started building pinhole case from front wall, film holder and winder. Then added back box, which will hold electronics in place. At the end I made shutter from thiner cardboard.
+
+To calculate pinhole size I used [this calculator](http://www.mrpinhole.com/calcpinh.php). Basically I wanted decent F-stop, something around 20, so to get pinhole diameter there is formula: `pinhole diameter = focal length / f-stop`, where focal length is distance form pinhole to film plane my case: `32mm / 20 = 1.6mm`. With f-stop 20 and in sunny weather exposure time is around 1/60s.
 
 ## Notes:
 
