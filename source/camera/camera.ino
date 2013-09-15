@@ -18,6 +18,8 @@ int shutterSwitchPin = 11;
 //Bounce shutterSwitch = Bounce(shutterSwitchPin, shutterSwitchPin); 
 
 int shutterServoPin = 3;
+int shutterServoOpenPosition = 0;
+int shutterServoClosePosition = 20;
 Servo shutterServo;
 int winderStepperSpeed = 150;
 Stepper winderStepper(64, 5, 6, 7, 8);
@@ -59,7 +61,7 @@ int getConfigLength() {
 int getCameraConfig(int param) {
   return cameraConfig[param];
 }
-int setCameraConfig(int param, int value) {
+void setCameraConfig(int param, int value) {
   if (getCameraConfig(param) != value) {
     cameraConfig[param] = value;
     eeprom_write_word(getEppromAddress(param), value);
@@ -102,21 +104,21 @@ enum {
 };
 CmdMessenger serialKiller = CmdMessenger(Serial);
 void unknownCmd() {
-  serialKiller.sendCmd(kSKMsgErr,"Unknown command");
+  serialKiller.sendCmd(kSKMsgErr,(char *)"Unknown command");
 }
 void serialKillerCallbackSetConfig() {
   int parameter = serialKiller.readInt();
   int value = serialKiller.readInt();
   if (!camera.isInState(CSIdle)) {
-    serialKiller.sendCmd(kSKMsgErr, "camera is busy");
+    serialKiller.sendCmd(kSKMsgErr, (char *)"camera is busy");
     return;
   }
   if (parameter == 0 || getConfigLength() <= parameter) {
-    serialKiller.sendCmd(kSKMsgErr, "invalid parameter id");
+    serialKiller.sendCmd(kSKMsgErr, (char *)"invalid parameter id");
     return;
   }
   setCameraConfig(parameter, value);
-  serialKiller.sendCmd(kSKMsgAck, "ok");
+  serialKiller.sendCmd(kSKMsgAck, (char *)"ok");
 }
 void serialKillerCallbackGetConfig() {
   char msg[20], param[8], value[8];
@@ -133,7 +135,7 @@ void serialKillerCallbackGetConfig() {
 void serialKillerStateChangeNotify(int stateId) {
   char sStateId[8];
   itoa(stateId, sStateId, 10);
-  if (sizeof(cameraConfig) / sizeof(int) > stateId) {
+  if (sizeof(cameraConfig) / sizeof(int) > (unsigned int)stateId) {
     serialKiller.sendCmd(kSKMsgState, sStateId);
   }
 }
@@ -160,7 +162,7 @@ void setup() {
   pinMode(resetFrameCountSwitchPin, INPUT);
   winderStepper.setSpeed(winderStepperSpeed);
   shutterServo.attach(shutterServoPin);
-  shutterServo.write(0);
+  shutterServo.write(shutterServoClosePosition);
 }
  
 
@@ -197,7 +199,7 @@ void CSStartUpdate() {
 //    digitalWrite(frameSizeLedPin, HIGH);
 //    smallFrameSize = true;
 //  }
-  serialKiller.sendCmd(kSKMsgAck, "ready");
+  serialKiller.sendCmd(kSKMsgAck, (char *)"ready");
   digitalWrite(statusLedPin, HIGH); delay(100);
   digitalWrite(statusLedPin, LOW); delay(100);
   digitalWrite(statusLedPin, HIGH);
@@ -219,13 +221,13 @@ void CSIdleUpdate() {
 
 
 int _currentShutterValue;
-int _calculateShutterValue() {
+void _calculateShutterValue() {
   if (cameraConfig[kCCUseLightMeter]) {
     _currentShutterValue = analogRead(lightMeterPin); // 0 - 1023
-    int aperture = 1; // średnica otworu
-    int focalLength = 23; // odległość kliszy od otworu
-    int fnumber = focalLength / aperture;
-    int maxShutter = 10000;
+    //int aperture = 1; // średnica otworu
+    //int focalLength = 23; // odległość kliszy od otworu
+    //int fnumber = focalLength / aperture;
+    //int maxShutter = 10000;
     _currentShutterValue = map(_currentShutterValue, 0, 1023, 3000, 100);
   } else {
     _currentShutterValue = cameraConfig[kCCManualShutterValue];
@@ -233,8 +235,8 @@ int _calculateShutterValue() {
 }
 void CSTakePictureEnter() {
   serialKillerStateChangeNotify(kSKValueTakePicture);
-  shutterServo.write(20);
-  _currentShutterValue = _calculateShutterValue();
+  shutterServo.write(shutterServoOpenPosition);
+  _calculateShutterValue();
   Serial.println(_currentShutterValue);
   blinkerInit();
 }
@@ -250,7 +252,7 @@ void CSTakePictureUpdate() {
   }
 }
 void CSTakePictureExit() { 
-  shutterServo.write(0);
+  shutterServo.write(shutterServoClosePosition);
   delay(50);
   blinkerFinish();
 }
